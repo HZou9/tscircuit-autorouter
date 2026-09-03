@@ -77,7 +77,7 @@ class Pipeline9CoreBinding
   }
 }
 
-test.skip("Pipeline9 routes the AM625SiP PMIC buck2 subcircuit", async (): Promise<void> => {
+test("Pipeline9 routes the AM625SiP PMIC buck2 subcircuit", async (): Promise<void> => {
   const { RootCircuit } = await import("@tscircuit/core")
   const circuit = new RootCircuit()
   circuit.add(
@@ -98,4 +98,4 @@ test.skip("Pipeline9 routes the AM625SiP PMIC buck2 subcircuit", async (): Promi
     .getCircuitJson()
     .filter((element) => element.type === "pcb_autorouting_error")
   expect(autoroutingErrors).toHaveLength(0)
-})
+}, 30_000)
